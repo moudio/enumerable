@@ -27,4 +27,21 @@ self.my_each {|el| arr << el if yield(el)}
 arr 
 end
 
+def all? 
+    result= false
+    self.my_each do |el| 
+    if yield(el) 
+    result = true
+    else 
+     false
+    end
+
+    result
+    
+    end
+
+
+end
+
+
 end
