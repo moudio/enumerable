@@ -20,14 +20,15 @@ def my_each_with_index
     end
 end
 
-#my_select
+#my_select method
 def my_select
 arr = []
 self.my_each {|el| arr << el if yield(el)}
 arr 
 end
 
-def all? 
+#my_all? method
+def my_all? 
     result= false
     self.my_each do |el| 
     if yield(el) 
@@ -35,13 +36,17 @@ def all?
     else 
      false
     end
-
     result
-    
     end
 
-
 end
 
+#my_any?
 
+def my_any?
+    self.my_each {|el| return true if yield(el)}
+    false    
 end
+
+    
+end #end of module
