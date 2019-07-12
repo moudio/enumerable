@@ -20,5 +20,11 @@ def my_each_with_index
     end
 end
 
+#my_select
+def my_select
+arr = []
+self.my_each {|el| arr << el if yield(el)}
+arr 
+end
 
 end
