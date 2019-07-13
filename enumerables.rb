@@ -48,5 +48,37 @@ def my_any?
     false    
 end
 
+
+def my_none?
+    result = true
+    self.my_each do |el|
+        if yield(el)
+        return false
+        end
+
+    end
+  result
+end 
+
+#count method
+def my_count(el)
+    return self.length if el == nil
+    return self.my_select(el) if el
+    if block_given? 
+    count = 0
+    self.my_each {|el| count+= 1 if yield(el)}
+    count
+    end 
+    
+end
+
+#my_map method 
+def my_map
+    arr = []
+    self.my_each {|el| arr << yield(el) }
+    arr 
+
+end 
+
     
 end #end of module
