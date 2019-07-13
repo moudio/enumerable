@@ -80,5 +80,14 @@ def my_map
 
 end 
 
+#my_inject 
+
+def my_inject(a = nil)
+    a ? total = a : total = self[0]
+   self.each do |n| 
+   total = yield(total, n)
+     end
+     total
+end
     
 end #end of module
