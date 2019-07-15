@@ -44,6 +44,7 @@ end
 #my_any?
 
 def my_any?
+
     self.my_each {|el| return true if yield(el)}
     false    
 end
@@ -75,7 +76,9 @@ end
 #my_map method 
 def my_map
     arr = []
-    self.my_each {|el| arr << yield(el) }
+        self.my_each  
+    block = Prock.new{|el| arr << yield(el) }
+    self.my_each(&block)
     arr 
 
 end 
@@ -84,10 +87,24 @@ end
 
 def my_inject(a = nil)
     a ? total = a : total = self[0]
-   self.each do |n| 
-   total = yield(total, n)
-     end
+    for i in 1...self.length 
+         total = yield(total, self[i])
+    end
+
      total
 end
     
 end #end of module
+
+
+
+
+#testing the my_inject method
+def multiply_els(arr)
+    arr.my_inject do |a,b|
+    a = a * b
+    a
+    end
+
+end
+
