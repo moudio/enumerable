@@ -74,17 +74,17 @@ def my_count(el)
 end
 
 #my_map method 
-def  my_map(&proc)
+def  my_map(proc = nil)
     arr = []
-    if proc
-    proc = Proc.new{|el| arr << yield(el) }
+    if proc.class == Proc
     self.my_each(&proc)
-    else
+    elsif block_given?
     self.my_each{|el| arr << yield(el) }
     end 
     arr 
 
-end 
+end
+
 
 #my_inject 
 
