@@ -74,11 +74,14 @@ def my_count(el)
 end
 
 #my_map method 
-def my_map
+def  my_map(&proc)
     arr = []
-        self.my_each  
-    block = Prock.new{|el| arr << yield(el) }
-    self.my_each(&block)
+    if proc
+    proc = Proc.new{|el| arr << yield(el) }
+    self.my_each(&proc)
+    else
+    self.my_each{|el| arr << yield(el) }
+    end 
     arr 
 
 end 
@@ -95,7 +98,6 @@ def my_inject(a = nil)
 end
     
 end #end of module
-
 
 
 
